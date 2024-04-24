@@ -1,6 +1,6 @@
 <script>
-import { t, locale, locales } from "./i18n";
-import {generateRandomID, checkID} from "./idTools"
+import { t, locale, locales } from "./utils/i18n";
+import {generateRandomID, checkID} from "./utils/idTools"
 	
 	// Create a locale specific timestamp
 $: time = new Date().toLocaleDateString($locale, {
