@@ -10,12 +10,13 @@ $: time = new Date().toLocaleDateString($locale, {
 	day: "numeric",
 });
 let idCode = '';
+let result = {}
 function generateID() {
 	idCode = generateRandomID();
 }
 function getIdInfo() {
-	let response = checkID(idCode);
-	console.log(response);
+	result = checkID(idCode);
+	console.log(result);
 }
 </script>
 
@@ -36,13 +37,13 @@ function getIdInfo() {
 	<p>{@html $t("homepage.welcome", { name: "Jane Doe" })}!</p>
 	<p>{@html $t("homepage.time", { time })}!</p>
 
-	    <!-- Input form with number-only constraints -->
+	<!-- Input form with number-only constraints -->
 	<div class="input-form">
 		<input
 			bind:value={idCode}
 			type="text"
 			class="form-input"
-			pattern="[0-9]{1,11}" 
+			pattern="[0-9]{11}" 
 			maxlength="11"
 			placeholder="Enter number"
 			title="Only numbers from 0 to 9, up to 11 characters" />
@@ -51,7 +52,17 @@ function getIdInfo() {
 			<button on:click={getIdInfo}>Check</button>
 			<button on:click={generateID}>Generate</button>
 		</div>
-
+	</div>
+	<div>
+		{#if result.error === null}
+			<p>{result.gender}</p>
+			<p>{result.dateOfBirth.date}</p>
+			<p>{result.birthOrder}</p>
+		{:else if result.error === undefined}
+			<p>Enter ID code to check</p>
+		{:else}
+			<p>{result.error}</p>
+		{/if}
 	</div>
 </main>
 

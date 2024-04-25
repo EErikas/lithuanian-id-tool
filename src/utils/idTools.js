@@ -35,7 +35,7 @@ const getRandomInt = (min, max) => {
 }
 
 export const generateRandomID = () => {
-  const randomDate = new Date(new Date() - Math.random() * (1e+12))
+  const randomDate = new Date(new Date().getTime() - Math.random() * (1e+12))
   const randomIdString = [
     getRandomInt(1, 6),
     String(randomDate.getFullYear() % 100).padStart(2, '0'),
