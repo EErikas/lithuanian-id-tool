@@ -25,7 +25,7 @@
 	<div class="select-wrapper">
 		<select bind:value={$locale}>
 			{#each locales as l}
-				<option value={l}>{l} </option>
+				<option value={l}>{l.toUpperCase()} </option>
 			{/each}
 		</select>
 	</div>
