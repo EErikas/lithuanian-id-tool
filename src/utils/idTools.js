@@ -48,30 +48,25 @@ export const generateRandomID = () => {
 }
 
 export const checkID = (idString) => {
+  // Check if provided string is of correct length
   if (idString.length !== 11) {
     return { error: 'error.wrongLength' }
   }
+
+  // Check if provided string consists of numbers only
   if (isNaN(idString)) {
     return { error: 'error.notNumber' }
   }
 
   // Convert idString to int array
   const idCodeArr = [...idString].map(Number)
-
-  // Verify that check digit is correct
-  const checkDigit = getCheckDigit(idCodeArr)
-  if (checkDigit !== idCodeArr[10]) {
-    return {
-      error: 'error.wrongCheckDigit',
-      correctAnswer: checkDigit
-    }
-  }
-
+  
+  // Verify the first digit and determine gender and century of the ID holder
   // If first digit is odd, it results option 1 (male)
   // if the first digit is odd, it results as option 2 (female)
   const genderCode = Number(idCodeArr[0] % 2 === 0)
   let year = 0
-
+  
   switch (idCodeArr[0]) {
     case 1:
     case 2:
@@ -89,6 +84,16 @@ export const checkID = (idString) => {
       return { error: 'error.wrongFirstDigit' }
   }
 
+  // Verify that check digit is correct
+  const checkDigit = getCheckDigit(idCodeArr)
+  if (checkDigit !== idCodeArr[10]) {
+    return {
+      error: 'error.wrongCheckDigit',
+      correctAnswer: checkDigit
+    }
+  }
+
+  // Continue working on the date calculation
   year += Number(idString.slice(1, 3))
   const month = idString.slice(3, 5)
   const day = idString.slice(5, 7)

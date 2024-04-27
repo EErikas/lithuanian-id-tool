@@ -15,6 +15,10 @@ a {
 	text-decoration: none;
 }
 
+h2 {
+	margin-top: 4rem;
+}
+
 a:hover {
 	text-decoration: underline;
 }
@@ -141,4 +145,10 @@ button:focus {
 
 .form-buttons button:hover {
 	background-color: #555; /* Hover effect */
+}
+
+main {
+	max-width: 60rem;
+	margin: 3rem auto;
+	padding: 0 0.5rem;
 }

@@ -5,13 +5,15 @@ Core functionality revolves around decoding Lithuanian ID codes as done in previ
 - [Python/Django](https://github.com/EErikas/personal_id_tool)
 - [C#](https://github.com/EErikas/personal_id_tool_c-)
 
-Todo:
+## Todo:
 - [x] General Logic for decoding IDs
 - [x] Random generation of valid IDs
 - [x] Basic UI to interface with the code
 - [ ] Output information about the provided ID
+- [x] Display information about wrong input on the page
 - [ ] Add translations for Lithuanian and English
 - [x] Set up Github pages and Github action to build it
 - [ ] Convert to TypeScript
 - [ ] Add Linting/Testing steps before deployment
+- [ ] Make it possible for the app to be installed as a PWA
 - [ ] ...
