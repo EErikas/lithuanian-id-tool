@@ -2,21 +2,13 @@
 	import { t, locale, locales } from "./utils/i18n";
 	import {generateRandomID, checkID} from "./utils/idTools";
 		
-	// Create a locale specific timestamp
-	$: time = new Date().toLocaleDateString($locale, {
-		weekday: "long",
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	});
 	let idCode = "";
-	let result = {}
+	let result = {};
 	function generateID() {
 		idCode = generateRandomID();
 	}
 	function getIdInfo() {
 		result = checkID(idCode);
-		console.log(result);
 	}
 </script>
 
@@ -32,8 +24,6 @@
 </div>
 
 <main>
-	<!-- <p>{@html $t("homepage.time", { time })}!</p> -->
-
 	<h2>{$t("homepage.introHeader")}</h2>
 	<p>{$t("homepage.introText")}</p>
 	
@@ -56,12 +46,29 @@
 
 	<div>
 		{#if result.error === null}
-			{#if result.dateOfBirth.exceptions.length === 0}
-				<p>{time}</p>
-			{/if}
-			<p>{result.gender}</p>
-			<p>{result.dateOfBirth.date}</p>
-			<p>{result.birthOrder}</p>
+		<h2>{$t("results.header")}</h2>
+		<table>
+			<tr>
+				<th>{$t("results.genderHeader")}</th>
+				<td>{$t(result.gender)}</td>
+			</tr>
+			<tr>
+				<th>{$t("results.birthDateHeader")}</th>
+				<td>
+					{result.dateOfBirth.date}
+					<!-- Enumerate footnotes for the exceptions (if such exist): -->
+					<sup>{Array.from({ length: result.dateOfBirth.exceptions.length }, (_, i) => i + 1).join(', ')}</sup>
+				</td>
+			</tr>
+			<tr>
+				<th>{$t("results.birthOrderHeader")}</th>
+				<td>{result.birthOrder}</td>
+			</tr>
+		</table>
+		{#each Object.entries(result.dateOfBirth.exceptions) as [id, content]}
+			<p><sup>{Number(id) + 1}</sup> {$t(content)}</p>
+		{/each}
+
 		{:else if result.error === undefined}
 			<!-- Initial stage, returns nothing -->
 		{:else}
@@ -76,3 +83,20 @@
 	{/each}
 	
 </main>
+
+<style>
+	table {
+		width: 70%;  /* Adjust table width as needed */
+		border-collapse: collapse;  /* Ensure borders don't overlap */
+	}
+	
+	/* Add borders to table cells */
+	td, th {
+		border: 1px solid #000;  /* 1px black border */
+		padding: 10px;  /* Padding for readability */
+	}
+	th {
+		background-color: #333;  /* Dark gray background */
+		color: white;  /* White text for contrast */
+	}
+</style>

@@ -18,6 +18,15 @@ export default {
     'error.notNumber': 'Wrong format! The personal ID code consists of 11 <strong>digits</strong>.',
     'error.wrongCheckDigit': 'Wrong check digit (should be <strong>{{correctAnswer}}</strong>)!',
     'error.wrongFirstDigit': 'Wrong first digit! The first digit can range from 1 to 6 (odd for males, even for females)',
+    'results.header': 'Decoding Results',
+    'results.genderHeader': 'Gender',
+    'results.birthDateHeader': 'Date of Birth',
+    'results.birthOrderHeader': 'Previous Entry Count',
+    'gender.male': 'Male',
+    'gender.female': 'Female',
+    'exception.month': 'Rare exception for elderly people who cannot recall their birth month, in such cases month is replaced with 0.',
+    'exception.day': 'Rare exception for elderly people who cannot recall their birth date, in such cases day is replaced with 0.',
+
   },
   lt: {
     'homepage.title': 'Lietuvos asmens kodo įrankiai',
@@ -37,7 +46,15 @@ export default {
     'error.wrongLength': 'Neteisingas formatas! Asmens kodas susideda iš <strong>11</strong> skaitmenų.',
     'error.notNumber': 'Neteisingas formatas! Asmens kodas susideda iš 11 <strong>skaitmenų</strong>.',
     'error.wrongCheckDigit': 'Neteisingas kontrolinis skaitmuo (turėtų būti <strong>{{correctAnswer}}</strong>)!',
-    'error.wrongFirstDigit': 'Neteisingas pirmasis skaitmuo! Pirmasis skaitmuo gali būti nuo 1 iki 6 (nelyginiai vyrams, lyginiai moterims)'
+    'error.wrongFirstDigit': 'Neteisingas pirmasis skaitmuo! Pirmasis skaitmuo gali būti nuo 1 iki 6 (nelyginiai vyrams, lyginiai moterims)',
+    'results.header': 'A/k iššifravimo rezultatai',
+    'results.genderHeader': 'Lytis',
+    'results.birthDateHeader': 'Gimimo data',
+    'results.birthOrderHeader': 'Tą dieną gimusių asmenų eilės numeris',
+    'gender.male': 'Vyras',
+    'gender.female': 'Moteris',
+    'exception.month': 'Reta išimtis suteikiama vyresnio amžiaus žmonėms neprisimenantiems savo gimimo mėnesio. Tokiuose koduose vietoje mėnesio skaitmenų įrašomi 0.',
+    'exception.day': 'Reta išimtis suteikiama vyresnio amžiaus žmonėms neprisimenantiems savo gimimo dienos. Tokiuose koduose vietoje dienos skaitmenų įrašomi 0.',
 
   }
 }
